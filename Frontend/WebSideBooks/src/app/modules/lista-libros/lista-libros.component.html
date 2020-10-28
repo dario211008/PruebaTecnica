@@ -1,0 +1,44 @@
+<div class="container">
+    <h3>Lista de libros</h3>
+    <div>
+        <button class="btn btn-primary" (click)="addBook()"><i class='fa fa-add'></i>Agregar libro</button>
+    </div>
+    <br>
+    <div>
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Autor</th>
+                    <th>Fecha de publicación</th>
+                    <th>Número de ejemplares</th>
+                    <th>Costo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let book of libros">
+                    <td>{{ book.id }}</td>
+                    <td>{{ book.nombre }}</td>
+                    <td>{{ book.descripcion }}</td>
+                    <td>{{ book.autor }}</td>
+                    <td>{{ book.fechaPublicacion }}</td>
+                    <td>{{ book.numeroEjemplares }}</td>
+                    <td>{{ book.costo }}</td>
+                    <td>
+                        <button class="btn btn-secondary" title="Editar" (click)="editBook(book)"><i
+                                class='fa fa-edit'></i></button>
+                        &nbsp;
+                        <button class="btn btn-danger" title="Eliminar" (click)="removeBook(book)"><i
+                                class='fa fa-remove'></i></button>
+                    </td>
+                </tr>
+                <tr *ngIf="libros?.length == 0">
+                    <td colspan="3" class="no-data-available">No data!</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

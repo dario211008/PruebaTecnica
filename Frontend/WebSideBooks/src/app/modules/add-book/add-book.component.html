@@ -1,0 +1,60 @@
+<h4 mat-dialog-title>Agregar libro</h4>
+<div mat-dialog-content>
+    <tbody>
+        <tr>
+            <td class="tag-title">
+                Nombre:
+            </td>
+            <td>
+                <input type="text" matInput>
+            </td>
+        </tr>
+        <tr>
+            <td class="tag-title">
+                Descripción:
+            </td>
+            <td>
+                <input type="text" matInput>
+            </td>
+        </tr>
+        <tr>
+            <td class="tag-title">
+                Autor:
+            </td>
+            <td>
+                <input type="text" matInput>
+            </td>
+        </tr>
+        <tr >
+            <td class="tag-title">
+                Fecha de publicación:
+            </td>
+            <td>
+                <input type="date" matInput>
+            </td>
+        </tr>
+        <tr>
+            <td class="tag-title">
+                Número de ejemplares:
+            </td>
+            <td>
+                <input type="number" matInput>
+            </td>
+        </tr>
+        <tr>
+            <td class="tag-title">
+                Costo:
+            </td>
+            <td>
+                <input type="number" matInput>
+            </td>
+        </tr>
+    </tbody>
+
+</div>
+
+<div mat-dialog-actions align="end">
+    <button class="btn btn-primary" (click)="accept()">Guardar</button>
+    &nbsp;
+    <button class="btn btn-secondary" (click)="cancel()">Cancelar</button>
+</div>

@@ -1,3 +1,5 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { AddBookComponent } from './modules/add-book/add-book.component';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,7 +27,9 @@ import { NgModule } from '@angular/core';
     DataTablesModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   entryComponents: [
     EditBookComponent,

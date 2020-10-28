@@ -30,13 +30,10 @@ export class ListaLibrosComponent implements OnDestroy, OnInit {
   }
 
   getBookList() {
-    const params = {
-
-    };
-    const serviceExecute = this.bookService.getBookList(params);
+    const serviceExecute = this.bookService.getBookList();
     serviceExecute.subscribe(
       (response) => {
-        this.libros = JSON.parse(JSON.stringify(response.data));
+        this.libros = JSON.parse(JSON.stringify(response));
         console.log(this.libros);
         this.dtTrigger.next();
       },
@@ -51,7 +48,7 @@ export class ListaLibrosComponent implements OnDestroy, OnInit {
     this.dtTrigger.unsubscribe();
   }
 
-  addBook(){
+  addBook() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
@@ -74,7 +71,7 @@ export class ListaLibrosComponent implements OnDestroy, OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.maxWidth = '800px';
     dialogConfig.minHeight = '50px';
-    dialogConfig.data = { message: 'Editar libro', };
+    dialogConfig.data = { message: 'Editar libro', data: book };
     this.dialog.open(EditBookComponent, dialogConfig).afterClosed()
       .subscribe(response => {
         if (response !== null || response === true) {
@@ -93,8 +90,19 @@ export class ListaLibrosComponent implements OnDestroy, OnInit {
     dialogConfig.minHeight = '50px';
     dialogConfig.data = { message: 'Editar libro', };
     this.dialog.open(DeleteBookComponent, dialogConfig).afterClosed()
-      .subscribe(response => {
-        if (response !== null || response === true) {
+      .subscribe(responseDialog => {
+        if (responseDialog !== null || responseDialog === true) {
+          const indexBook = this.libros.findIndex(b => b.id ===  book.id);
+          this.libros.splice(indexBook, 1);
+          const serviceExecute = this.bookService.deleteBook(book);
+          serviceExecute.subscribe(
+            (response) => {
+              // this.getBookList();
+            },
+            (error) => {
+
+            }
+          );
         } else {
 
         }

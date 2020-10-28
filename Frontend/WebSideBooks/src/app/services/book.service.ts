@@ -14,12 +14,36 @@ export class BookService {
 
   }
 
-  public getBookList(request: any): Observable<any> {
+  public getBookList(): Observable<any> {
     // --> CABECERA
     this.headers = new HttpHeaders();
     this.headers = this.headers.set('Content-Type', 'application/json');
     // --> EJECUCION DEL SERVICIO
-    return this.http.get('https://angular-datatables-demo-server.herokuapp.com/');
+    return this.http.get('http://localhost:8083/crud/getBook');
+  }
+
+  public addBook(request: any): Observable<any> {
+    // --> CABECERA
+    this.headers = new HttpHeaders();
+    this.headers = this.headers.set('Content-Type', 'application/json');
+    // --> EJECUCION DEL SERVICIO
+    return this.http.post('http://localhost:8083/crud/addBook', request);
+  }
+
+  public updateBook(request: any): Observable<any> {
+    // --> CABECERA
+    this.headers = new HttpHeaders();
+    this.headers = this.headers.set('Content-Type', 'application/json');
+    // --> EJECUCION DEL SERVICIO
+    return this.http.post('http://localhost:8083/crud/updateBook', request);
+  }
+
+  public deleteBook(request: any): Observable<any> {
+    // --> CABECERA
+    this.headers = new HttpHeaders();
+    this.headers = this.headers.set('Content-Type', 'application/json');
+    // --> EJECUCION DEL SERVICIO
+    return this.http.post('http://localhost:8083/crud/deleteBook', request);
   }
 
 }

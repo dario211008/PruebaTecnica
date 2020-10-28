@@ -1,60 +1,61 @@
 <h4 mat-dialog-title>Editar libro</h4>
 <div mat-dialog-content>
-    <tbody>
-        <tr>
-            <td class="tag-title">
-                Nombre:
-            </td>
-            <td>
-                <input type="text" matInput>
-            </td>
-        </tr>
-        <tr>
-            <td class="tag-title">
-                Descripción:
-            </td>
-            <td>
-                <input type="text" matInput>
-            </td>
-        </tr>
-        <tr>
-            <td class="tag-title">
-                Autor:
-            </td>
-            <td>
-                <input type="text" matInput>
-            </td>
-        </tr>
-        <tr >
-            <td class="tag-title">
-                Fecha de publicación:
-            </td>
-            <td>
-                <input type="date" matInput>
-            </td>
-        </tr>
-        <tr>
-            <td class="tag-title">
-                Número de ejemplares:
-            </td>
-            <td>
-                <input type="number" matInput>
-            </td>
-        </tr>
-        <tr>
-            <td class="tag-title">
-                Costo:
-            </td>
-            <td>
-                <input type="number" matInput>
-            </td>
-        </tr>
-    </tbody>
-
+    <form [formGroup]="BookForm">
+        <tbody>
+            <tr>
+                <td class="tag-title">
+                    Nombre:
+                </td>
+                <td>
+                    <input type="text" matInput formControlName="nombre">
+                </td>
+            </tr>
+            <tr>
+                <td class="tag-title">
+                    Descripción:
+                </td>
+                <td>
+                    <input type="text" matInput formControlName="descripcion">
+                </td>
+            </tr>
+            <tr>
+                <td class="tag-title">
+                    Autor:
+                </td>
+                <td>
+                    <input type="text" matInput formControlName="autor">
+                </td>
+            </tr>
+            <tr>
+                <td class="tag-title">
+                    Fecha de publicación:
+                </td>
+                <td>
+                    <input type="date" matInput formControlName="fechaPublicacion">
+                </td>
+            </tr>
+            <tr>
+                <td class="tag-title">
+                    Número de ejemplares:
+                </td>
+                <td>
+                    <input type="number" matInput formControlName="numeroEjemplares">
+                </td>
+            </tr>
+            <tr>
+                <td class="tag-title">
+                    Costo:
+                </td>
+                <td>
+                    <input type="number" matInput formControlName="costo">
+                </td>
+            </tr>
+        </tbody>
+    </form>
 </div>
 
 <div mat-dialog-actions align="end">
-    <button class="btn btn-primary" (click)="accept()">Guardar</button>
+    <button class="btn btn-primary" (click)="accept()" [disabled]="this.BookForm.invalid">Guardar</button>
     &nbsp;
     <button class="btn btn-secondary" (click)="cancel()">Cancelar</button>
 </div>
